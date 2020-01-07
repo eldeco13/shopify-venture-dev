@@ -2,5 +2,5 @@
 .DS_Store
 Thumbs.db
 prepros.config
-config-yml
+config.yml
 settings_data.json
