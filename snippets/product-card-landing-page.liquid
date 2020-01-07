@@ -1,0 +1,21 @@
+<!-- /snippets/product-card.liquid -->
+
+{% comment %}
+  The product card snippet is passed a liquid object, used in this file
+  as "product". The object is either "product" or "item", the latter if
+  it is from search results.
+{% endcomment %}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+  {% comment %} <img src="{{ product.featured_image.src | img_url: '480x480' }}" alt="{{ product.featured_image.alt | escape }}" class="product-card__image__TODO"> {% endcomment %}
+  {% assign image = product.featured_image %}
+      <div class="grid__item one-half reveal">
+        <!--
+        <img src="{{ product.featured_image.src | img_url: '480x480' }}" alt="{{ product.featured_image.alt | escape }}" class="product-card__image">
+        <img class="hidden" src="{{ product.images.last | img_url: '450x450' }}" alt="{{ product.images.last.alt | escape }}" />
+      -->
+      </div>
+      <div class="grid__item  one-half">
+        {{ product.title }}
+      </div>
+

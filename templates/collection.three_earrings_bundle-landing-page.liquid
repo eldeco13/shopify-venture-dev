@@ -1,0 +1,496 @@
+<div class="grid grid--no-gutters grid--uniform">
+    <div class="grid__item">
+      <div class="grid">
+        <div class="grid__item">
+            {% comment %} {% section 'image-content' %} {% endcomment %}
+            <img src="{{'banner_bundle_earrings_v3_red.jpg' | file_img_url: '1200x400'}}" alt="{{}}" class="collection-three-earrings-landing-page__banner-image">
+        </div>
+      </div>
+    </div>
+  <!--
+  <div class="grid__item">
+    <div class="grid text-right collection-three-earrings-landing-page__free-delivery">
+      <div class="grid__item one-third">
+          <img src="{{ 'free-delivery.png' | file_img_url: '102x44'}}" alt="{{ shop.name }}" itemprop="free delivery icon"> 
+         <span> Free Shipping </span>
+      </div>
+      <div class="grid__item one-third">
+          <a href="https://www.shopify.com/pci-compliant?utm_source=secure&amp;utm_medium=shop" 
+          title="This online store is secured by Shopify" target="_blank" rel="nofollow">
+          <img src="https://cdn.shopify.com/s/images/badges/shopify-secure-badge-white.svg" 
+          alt="Shopify secure badge" /></a>
+         <span> Shop with confidence </span>
+      </div>
+    </div>
+  </div> -->
+
+  <!--
+  <div class="grid__item"> 
+      <div class="grid grid--center">
+        <div class="grid__item one-third"></div>
+        <div class="grid__item one-third">
+            <p>Free Shipping</p>
+        </div>
+        <div class="grid__item two-thirds">
+            <p>Shop with confidence</p>
+        </div>
+      </div> 
+  </div> -->
+  <div class="grid__item">
+      <div class="grid grid--no-gutters grid--uniform">
+        {% for product in collection.products %}
+            {% capture thecycle %}{% cycle 'odd', 'even' %}{% endcapture %}
+              {% if thecycle == 'odd' %}
+                <div class="grid  grid--center">
+                      <div class="grid__item one-half reveal">
+                          <div class="">
+                            <img src="{{ product.featured_image.src | img_url: '400x400' }}" alt="{{ product.featured_image.alt | escape }}" class="product-card-landing-page__image" style="float:right">
+                            <img class="hidden" src="{{ product.images.last | img_url: '400x400' }}" alt="{{ product.images.last.alt | escape }}" style="float:right"/>
+                          </div>
+                      </div>
+                      <div class="grid__item one-half text-left landing-page-three-earring-bundle-product-card__section">
+                          <div class="landing-page-three-earring-bundle-product-card__title">{{ product.title }}</div>
+                          <!--<div class="landing-page-three-earring-bundle-product-card__description">{{ product.content | truncate: 100}}</div> --> 
+                          <div>{{ product.price | money}}</div>
+
+                          <div id="top_left_aligned" style="float:left; margin-bottom:10px;">
+                              <div id='product-{{product.id}}'></div>
+                                <script type="text/javascript">
+                                /*<![CDATA[*/
+                                (function () {
+                                  var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+                                  if (window.ShopifyBuy) {
+                                    if (window.ShopifyBuy.UI) {
+                                      ShopifyBuyInit();
+                                    } else {
+                                      loadScript();
+                                    }
+                                  } else {
+                                    loadScript();
+                                  }
+                                  function loadScript() {
+                                    var script = document.createElement('script');
+                                    script.async = true;
+                                    script.src = scriptURL;
+                                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+                                    script.onload = ShopifyBuyInit;
+                                  }
+                                  function ShopifyBuyInit() {
+                                    var client = ShopifyBuy.buildClient({
+                                      domain: 'brand-rascal.myshopify.com',
+                                      storefrontAccessToken: '0ec91f155491b7a01ecc26990311116d',
+                                    });
+                                    ShopifyBuy.UI.onReady(client).then(function (ui) {
+                                      ui.createComponent('product', {
+                                        id: '{{product.id}}',
+                                        node: document.getElementById('product-{{product.id}}'),
+                                        moneyFormat: '%24%7B%7Bamount%7D%7D',
+                                        options: {
+                                  "product": {
+                                    "styles": {
+                                      "product": {
+                                        "@media (min-width: 601px)": {
+                                          "max-width": "calc(25% - 20px)",
+                                          "margin-left": "20px",
+                                          "margin-bottom": "50px"
+                                        }
+                                      },
+                                      "button": {
+                                        "font-family": "Droid Sans, sans-serif",
+                                        "font-weight": "bold",
+                                        "font-size": "14px",
+                                        "padding-top": "16.5px",
+                                        "padding-bottom": "16.5px",
+                                        "color": "#593527",
+                                        ":hover": {
+                                          "color": "#593527",
+                                          "background-color": "#98816d"
+                                        },
+                                        "background-color": "#a98f79",
+                                        ":focus": {
+                                          "background-color": "#98816d"
+                                        },
+                                        "border-radius": "12px",
+                                        "padding-left": "40px",
+                                        "padding-right": "40px"
+                                      },
+                                      "quantityInput": {
+                                        "font-size": "17px",
+                                        "padding-top": "16.5px",
+                                        "padding-bottom": "16.5px"
+                                      }
+                                    },
+                                    "contents": {
+                                      "img": false,
+                                      "title": false,
+                                      "price": false
+                                    },
+                                    "text": {
+                                      "button": "Add to cart"
+                                    },
+                                    "googleFonts": [
+                                      "Droid Sans"
+                                    ]
+                                  },
+                                  "productSet": {
+                                    "styles": {
+                                      "products": {
+                                        "@media (min-width: 601px)": {
+                                          "margin-left": "-20px"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "modalProduct": {
+                                    "contents": {
+                                      "img": false,
+                                      "imgWithCarousel": true,
+                                      "button": false,
+                                      "buttonWithQuantity": true
+                                    },
+                                    "styles": {
+                                      "product": {
+                                        "@media (min-width: 601px)": {
+                                          "max-width": "100%",
+                                          "margin-left": "0px",
+                                          "margin-bottom": "0px"
+                                        }
+                                      },
+                                      "button": {
+                                        "font-family": "Droid Sans, sans-serif",
+                                        "font-weight": "bold",
+                                        "font-size": "17px",
+                                        "padding-top": "16.5px",
+                                        "padding-bottom": "16.5px",
+                                        "color": "#593527",
+                                        ":hover": {
+                                          "color": "#593527",
+                                          "background-color": "#98816d"
+                                        },
+                                        "background-color": "#a98f79",
+                                        ":focus": {
+                                          "background-color": "#98816d"
+                                        },
+                                        "border-radius": "12px",
+                                        "padding-left": "67px",
+                                        "padding-right": "67px"
+                                      },
+                                      "quantityInput": {
+                                        "font-size": "17px",
+                                        "padding-top": "16.5px",
+                                        "padding-bottom": "16.5px"
+                                      }
+                                    },
+                                    "googleFonts": [
+                                      "Droid Sans"
+                                    ],
+                                    "text": {
+                                      "button": "Add to cart"
+                                    }
+                                  },
+                                  "cart": {
+                                    "styles": {
+                                      "button": {
+                                        "font-family": "Droid Sans, sans-serif",
+                                        "font-weight": "bold",
+                                        "font-size": "17px",
+                                        "padding-top": "16.5px",
+                                        "padding-bottom": "16.5px",
+                                        "color": "#593527",
+                                        ":hover": {
+                                          "color": "#593527",
+                                          "background-color": "#98816d"
+                                        },
+                                        "background-color": "#a98f79",
+                                        ":focus": {
+                                          "background-color": "#98816d"
+                                        },
+                                        "border-radius": "12px"
+                                      }
+                                    },
+                                    "text": {
+                                      "total": "Subtotal",
+                                      "button": "Checkout"
+                                    },
+                                    "popup": false,
+                                    "googleFonts": [
+                                      "Droid Sans"
+                                    ]
+                                  },
+                                  "toggle": {
+                                    "styles": {
+                                      "toggle": {
+                                        "font-family": "Droid Sans, sans-serif",
+                                        "font-weight": "bold",
+                                        "background-color": "#a98f79",
+                                        ":hover": {
+                                          "background-color": "#98816d"
+                                        },
+                                        ":focus": {
+                                          "background-color": "#98816d"
+                                        }
+                                      },
+                                      "count": {
+                                        "font-size": "17px",
+                                        "color": "#593527",
+                                        ":hover": {
+                                          "color": "#593527"
+                                        }
+                                      },
+                                      "iconPath": {
+                                        "fill": "#593527"
+                                      }
+                                    },
+                                    "googleFonts": [
+                                      "Droid Sans"
+                                    ]
+                                  }
+                                },
+                                      });
+                                    });
+                                  }
+                                })();
+                                /*]]>*/
+                                </script>
+                          </div>
+
+                        </div>
+                </div>
+                {% else %}
+                <div class="grid grid--center">
+                    <div class="grid__item one-half text-right landing-page-three-earring-bundle-product-card__section">
+                      <div class="landing-page-three-earring-bundle-product-card__title">{{ product.title }}</div>
+                      <!--<div class="landing-page-three-earring-bundle-product-card__description">{{ product.content | truncate: 100}}</div> -->
+                      <div>{{ product.price | money}}</div>
+                      <div id="product-{{product.id}}" style="float: right; margin-bottom:10px;"></div>
+                      
+                      <script type="text/javascript">
+                      /*<![CDATA[*/
+                      (function () {
+                        var scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js';
+                        if (window.ShopifyBuy) {
+                          if (window.ShopifyBuy.UI) {
+                            ShopifyBuyInit();
+                          } else {
+                            loadScript();
+                          }
+                        } else {
+                          loadScript();
+                        }
+                        function loadScript() {
+                          var script = document.createElement('script');
+                          script.async = true;
+                          script.src = scriptURL;
+                          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(script);
+                          script.onload = ShopifyBuyInit;
+                        }
+                        function ShopifyBuyInit() {
+                          var client = ShopifyBuy.buildClient({
+                            domain: 'brand-rascal.myshopify.com',
+                            storefrontAccessToken: '0ec91f155491b7a01ecc26990311116d',
+                          });
+                          ShopifyBuy.UI.onReady(client).then(function (ui) {
+                            ui.createComponent('product', {
+                              id: '{{product.id}}',
+                              node: document.getElementById('product-{{product.id}}'),
+                              moneyFormat: '%24%7B%7Bamount%7D%7D',
+                              options: {
+                        "product": {
+                          "styles": {
+                            "product": {
+                              "@media (min-width: 601px)": {
+                                "max-width": "calc(25% - 20px)",
+                                "margin-left": "20px",
+                                "margin-bottom": "50px"
+                              }
+                            },
+                            "button": {
+                              "font-family": "Droid Sans, sans-serif",
+                              "font-weight": "bold",
+                              "font-size": "14px",
+                              "padding-top": "16.5px",
+                              "padding-bottom": "16.5px",
+                              "color": "#593527",
+                              ":hover": {
+                                "color": "#593527",
+                                "background-color": "#98816d"
+                              },
+                              "background-color": "#a98f79",
+                              ":focus": {
+                                "background-color": "#98816d"
+                              },
+                              "border-radius": "12px",
+                              "padding-left": "40px",
+                              "padding-right": "40px"
+                            },
+                            "quantityInput": {
+                              "font-size": "17px",
+                              "padding-top": "16.5px",
+                              "padding-bottom": "16.5px"
+                            }
+                          },
+                          "contents": {
+                            "img": false,
+                            "title": false,
+                            "price": false
+                          },
+                          "text": {
+                            "button": "Add to cart"
+                          },
+                          "googleFonts": [
+                            "Droid Sans"
+                          ]
+                        },
+                        "productSet": {
+                          "styles": {
+                            "products": {
+                              "@media (min-width: 601px)": {
+                                "margin-left": "-20px"
+                              }
+                            }
+                          }
+                        },
+                        "modalProduct": {
+                          "contents": {
+                            "img": false,
+                            "imgWithCarousel": true,
+                            "button": false,
+                            "buttonWithQuantity": true
+                          },
+                          "styles": {
+                            "product": {
+                              "@media (min-width: 601px)": {
+                                "max-width": "100%",
+                                "margin-left": "0px",
+                                "margin-bottom": "0px"
+                              }
+                            },
+                            "button": {
+                              "font-family": "Droid Sans, sans-serif",
+                              "font-weight": "bold",
+                              "font-size": "17px",
+                              "padding-top": "16.5px",
+                              "padding-bottom": "16.5px",
+                              "color": "#593527",
+                              ":hover": {
+                                "color": "#593527",
+                                "background-color": "#98816d"
+                              },
+                              "background-color": "#a98f79",
+                              ":focus": {
+                                "background-color": "#98816d"
+                              },
+                              "border-radius": "12px",
+                              "padding-left": "67px",
+                              "padding-right": "67px"
+                            },
+                            "quantityInput": {
+                              "font-size": "17px",
+                              "padding-top": "16.5px",
+                              "padding-bottom": "16.5px"
+                            }
+                          },
+                          "googleFonts": [
+                            "Droid Sans"
+                          ],
+                          "text": {
+                            "button": "Add to cart"
+                          }
+                        },
+                        "cart": {
+                          "styles": {
+                            "button": {
+                              "font-family": "Droid Sans, sans-serif",
+                              "font-weight": "bold",
+                              "font-size": "17px",
+                              "padding-top": "16.5px",
+                              "padding-bottom": "16.5px",
+                              "color": "#593527",
+                              ":hover": {
+                                "color": "#593527",
+                                "background-color": "#98816d"
+                              },
+                              "background-color": "#a98f79",
+                              ":focus": {
+                                "background-color": "#98816d"
+                              },
+                              "border-radius": "12px"
+                            }
+                          },
+                          "text": {
+                            "total": "Subtotal",
+                            "button": "Checkout"
+                          },
+                          "popup": false,
+                          "googleFonts": [
+                            "Droid Sans"
+                          ]
+                        },
+                        "toggle": {
+                          "styles": {
+                            "toggle": {
+                              "font-family": "Droid Sans, sans-serif",
+                              "font-weight": "bold",
+                              "background-color": "#a98f79",
+                              ":hover": {
+                                "background-color": "#98816d"
+                              },
+                              ":focus": {
+                                "background-color": "#98816d"
+                              }
+                            },
+                            "count": {
+                              "font-size": "17px",
+                              "color": "#593527",
+                              ":hover": {
+                                "color": "#593527"
+                              }
+                            },
+                            "iconPath": {
+                              "fill": "#593527"
+                            }
+                          },
+                          "googleFonts": [
+                            "Droid Sans"
+                          ]
+                        }
+                      },
+                            });
+                          });
+                        }
+                      })();
+                      /*]]>*/
+                      </script>
+
+                    </div>
+                    <div class="grid__item one-half reveal">
+                      <img src="{{ product.featured_image.src | img_url: '400x400' }}" alt="{{ product.featured_image.alt | escape }}" class="product-card-landing-page__image">
+                      <img class="hidden" src="{{ product.images.last | img_url: '400x400' }}" alt="{{ product.images.last.alt | escape }}" />
+                    </div>
+                </div>
+                {%endif%}
+          {% else %}
+              {% comment %}
+                If collection exists but is empty, display message
+              {% endcomment %}
+              <div class="grid__item text-center">
+                <p>{{ 'collections.general.no_matches' | t }}</p>
+              </div>
+        {% endfor %}
+      </div>
+  </div>
+  {% comment %} about us section {% endcomment %}
+  <div class="grid__item">
+      <div id='collection_two_plus_one_landing_page--rich-text'>
+          {% section 'quotes' %}
+      </div>
+  </div>
+  <div class="grid__item">
+      <div id='collection_two_plus_one_landing_page--rich-text'>
+          {% section 'rich-text' %}
+      </div>
+    </div>
+
+    
+
+</div>
